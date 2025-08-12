@@ -42,6 +42,23 @@ RUN sudo add-apt-repository universe \
     python3-argcomplete \
   && rm -rf /var/lib/apt/lists/*
   
+# Basic utilities 설치
+RUN apt-get update && \
+    apt-get install -y wget gnupg lsb-release software-properties-common && \
+    rm -rf /var/lib/apt/lists/*
+
+# STEP 1. NVIDIA repository key 등록
+RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb && \
+    dpkg -i cuda-keyring_1.1-1_all.deb && \
+    rm cuda-keyring_1.1-1_all.deb && \
+    apt-get update
+
+# STEP 2. CUDA toolkit 11.8 설치
+RUN apt-get install -y cuda-toolkit-11-8
+
+# STEP 3. 환경 변수 설정
+ENV PATH=/usr/local/cuda/bin:$PATH
+ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 # Setup environment for ROS 2
 ENV ROS_DISTRO=humble
 ENV ROS_VERSION=2
@@ -64,15 +81,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   python3-pip \
   ros-dev-tools \
   ros-humble-ament-* \
-  vim \
+  ros-humble-rviz2 \
+  ros-humble-rviz-common \
+  libogre-1.12-dev \
   ros-humble-vision-msgs \
+  vim \
   && rm -rf /var/lib/apt/lists/*
-  
+
 # Optional: auto-source ROS in container bash sessions
 RUN echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc && \
     echo "export RMW_IMPLEMENTATION=rmw_fastrtps_cpp" >> /root/.bashrc && \
+    echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu" >> /root/.bashrc && \
     echo "export PYTHONPATH=$PYTHONPATH:/opt/ros/humble/lib/python3.10/site-packages" >> /root/.bashrc
 
 # Startup
 CMD ["/isaac-sim/runapp.sh"]
-
