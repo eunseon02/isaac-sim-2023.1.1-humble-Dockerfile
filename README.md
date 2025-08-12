@@ -1,6 +1,6 @@
-# Isaac-Sim-2023.1.1-humble-Dockerfile
+# Isaac-Sim-2023.1.1-Humble-Dockerfile
 
-Dockerfile for isaac-sim:2023.1.1 with ros2 humble
+Dockerfile for isaac-sim:2023.1.1 with ROS2 Humble
 
 
 ## Docker Build
