@@ -2,13 +2,13 @@
 docker rm -f isaac-sim
 
 xhost +
-docker run --name isaac-sim --entrypoint bash -it --gpus all -e "ACCEPT_EULA=Y" --rm --network=host \
-  -e "PRIVACY_CONSENT=Y" \
-  -v $HOME/.Xauthority:/root/.Xauthority \
-  -e DISPLAY=$DISPLAY \ 
+docker run --name isaac-sim --entrypoint bash -it --gpus all --rm --network=host \
+  -e ACCEPT_EULA=Y \
+  -e PRIVACY_CONSENT=Y \
+  -e DISPLAY=$DISPLAY \
   -e QT_X11_NO_MITSHM=1 \
   -v $HOME/.Xauthority:/root/.Xauthority:ro \
-  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \ 
+  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
   -v ~/docker/isaac-sim/cache/kit:/isaac-sim/kit/cache:rw \
   -v ~/docker/isaac-sim/cache/ov:/root/.cache/ov:rw \
   -v ~/docker/isaac-sim/cache/pip:/root/.cache/pip:rw \
