@@ -17,4 +17,4 @@ docker run --name isaac-sim --entrypoint bash -it --gpus all --rm --network=host
   -v ~/docker/isaac-sim/logs:/root/.nvidia-omniverse/logs:rw \
   -v ~/docker/isaac-sim/data:/root/.local/share/ov/data:rw \
   -v ~/docker/isaac-sim/documents:/root/Documents:rw \
-  isaac-sim:2023.1.0-ubuntu22.04 \
+  isaac-sim:2023.1.1-humble \
