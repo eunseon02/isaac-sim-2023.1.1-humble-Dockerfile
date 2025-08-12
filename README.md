@@ -28,4 +28,4 @@ cd /isaac-sim
 ```
 
 ### Reference 
-[NVIDIA-Omniverse](https://github.com/NVIDIA-Omniverse/IsaacSim-dockerfileshttps:/)
+[NVIDIA-Omniverse](https://github.com/NVIDIA-Omniverse/IsaacSim-dockerfiles)
