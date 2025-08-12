@@ -41,6 +41,10 @@ RUN sudo add-apt-repository universe \
     ros-humble-ros-base \
     python3-argcomplete \
   && rm -rf /var/lib/apt/lists/*
+
+
+RUN apt-get update && apt-get install -y nvidia-utils-570
+
   
 # Basic utilities 설치
 RUN apt-get update && \
