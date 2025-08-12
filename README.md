@@ -3,10 +3,15 @@
 Dockerfile for isaac-sim:2023.1.1 with ROS2 Humble
 
 
-## Docker Build
+## Isaac Sim Docker Image
+### Build from Source
 ```bash
 cd docker/isaac-sim-humble
 docker build -t isaac-sim:2023.1.1-humble .
+```
+### Pull Prebuilt Image
+```bash
+docker pull ghcr.io/eunseon02/isaac-sim:2023.1.1-humble-20.04
 ```
 
 ## Docker Run
