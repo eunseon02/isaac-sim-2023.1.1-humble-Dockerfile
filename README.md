@@ -21,3 +21,6 @@ bash run_container.sh
 cd /isaac-sim
 ./runapp.sh
 ```
+
+### Reference 
+[NVIDIA-Omniverse](https://github.com/NVIDIA-Omniverse/IsaacSim-dockerfileshttps:/)
